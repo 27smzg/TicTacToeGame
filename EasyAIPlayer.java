@@ -1,8 +1,7 @@
-public class EasyAIPlayer extends AIPlayer
-{
+public class EasyAIPlayer extends AIPlayer {
     //constructor (just super)
 
-    //makeMove() - returns true when made, false otherwise
+    //makeMove()
         //checks for win, plays the win 75% of the time
             //if there's a win, does the following:
 

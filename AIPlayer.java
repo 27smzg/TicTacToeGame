@@ -1,5 +1,4 @@
-public class AIPlayer extends Player
-{
+public class AIPlayer extends Player {
     //private instance variables - boolean isFirst
 
     //constructor - sets instance variables (true for x and isFirst) & (false for o and !isFirst)
@@ -19,7 +18,7 @@ public class AIPlayer extends Player
 
         //or the opposite, if there it exceeds the size of the array
 
-    //randomMove() - returns true when made, false otherwise
+    //randomMove()
         //find move by using random number (0-2) for the row and column indices, makeMove() with that returns false, try again if it returns false
 
 }

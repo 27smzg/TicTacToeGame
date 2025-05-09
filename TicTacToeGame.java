@@ -1,5 +1,8 @@
-public class TicTacToeGame
-{
+public class TicTacToeGame {
+    public static void main(String[] args){
+        Board a = new Board();
+        System.out.println(a.toString());
+    }
     //private instance variable - board
     //current player private instance variable
 
