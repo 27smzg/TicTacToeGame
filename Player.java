@@ -14,7 +14,8 @@ public class Player {
     }
 
     //makeMove(board, r, c)
-    public makeMove(Board b, int r, int c) {
+    //precondition - move is valid
+    public void makeMove(Board b, int r, int c) {
         //triggers the board makeMove() with r, c, and the instance variable letter
         b.makeMove(r, c, sym);
     }

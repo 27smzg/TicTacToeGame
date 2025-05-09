@@ -8,6 +8,11 @@ public class AIPlayer extends Player {
         isFirst = isF;
     }
 
+    //getIsFirst() - returns isFirst;
+    public char getIsFirst() {
+        return isFirst;
+    }
+
     //checkRow(int r) - checks the row, returning the array of that row
 
     //checkCol

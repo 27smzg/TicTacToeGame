@@ -1,7 +1,7 @@
 public class HardAIPlayer extends AIPlayer {
     //constructor (just super)
 
-    //makeMove(isFirst)
+    //makeMove()
 
         //if isFirst is true:
 
