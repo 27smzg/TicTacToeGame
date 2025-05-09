@@ -30,12 +30,20 @@ public class AIPlayer extends Player {
         //or the opposite, if there it exceeds the size of the array
     }
 
-    //checkForWin(board, letter) return int[] {r, c} if there's a win, {-1, -1} otherwise
-        //iterates through the 2D array, checking if any square has a matching x or o (same as letter) next/diagnol to it
-
-        //if there's a matching x or o, checks if there is a - in the same direciton
-
-        //or the opposite, if there it exceeds the size of the array
+    //checkForWin(board) return int[] {r, c} if there's a win, {-1, -1} otherwise
+    public int[] checkForWin(board a) {
+        //check each square with a clone of the board, and test if it would produce a win
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
+                board b = cloneBoard(a);
+                super.makeMove(b, i, j);
+                if (b.checkWin()) {
+                    return {i, j};
+                }
+            }
+        }
+     return {-1, -1};
+    }
 
     //randomMove()
         //find move by using random number (0-2) for the row and column indices, makeMove() with that returns false, try again if it returns false

@@ -35,6 +35,16 @@ public class Board {
         //sets board[r][c] to the sym
         board[r][c] = sym;
     }
+    //cloneBoard(Board a), returns a copy of the board input
+    public static Board cloneBoard(Board a) {
+        Board b = new Board();
+        //iterates through each square in board a, copying it onto board b
+        for (int = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
+                b[i][j] = a[i][j];
+            }
+        }
+    }
 
     //checkRowWin()
     public boolean checkRowWin() {
