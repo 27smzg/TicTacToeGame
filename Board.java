@@ -8,14 +8,14 @@ public class Board {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 //Set each square to a "-"
-                board[i][j] = "-";
+                board[i][j] = '-';
             }
         }
     }
 
     //isValidMove() - checks if the square is a "-"
-    public boolean isValidMove(r,c) {
-        if (board[r][c].equals("-")) {
+    public boolean isValidMove(int r,int c) {
+        if (board[r][c] == '-') {
             return true;
         }
         else {
@@ -34,7 +34,7 @@ public class Board {
     public boolean checkRowWin() {
         //Iterates through each row, testing if all three are the same x/o
         for (int i = 0; i < board.length; i++) {
-            if (!board[i][0].equals("-") && board[i][0].equals(board[i][1]) && board[i][1].equals(board[i][2])) {
+            if (!(board[i][0] == '-') && board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
                 return true;
             }
         }
@@ -45,7 +45,7 @@ public class Board {
     public boolean checkColWin() {
         //Iterates through each column, testing if all three are the same x/o
         for (int i = 0; i < board[0].length; i++) {
-            if (!board[0][i].equals("-") && board[0][i].equals(board[1][i]) && board[1][i].equals(board[2][i])) {
+            if (!(board[0][i] == '-') && board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
                 return true;
             }
         }
@@ -55,10 +55,10 @@ public class Board {
     //CheckDiagWin()
     public boolean checkDiagWin() {
         //Iterates through the two diagnowls, testing if all three are the same x/o
-        if (!board[0][0].equals("-") && board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2])) {
+        if (!(board[0][0] == '-') && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             return true;
         }
-        else if (!board[2][0].equals("-") && board[2][0].equals(board[1][1]) && board[1][1].equals(board[0][2])) {
+        else if (!(board[2][0] == '-') && board[2][0] == board[1][1] && board[1][1] == board[0][2]) {
             return true;
         }
         return false;
@@ -83,7 +83,7 @@ public class Board {
         //iterates through the array, checking for any dashes - returning false if it finds one, true otherwise
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j].equals("-")) {
+                if (board[i][j] == '-') {
                     return false;
                 }
             }
@@ -98,13 +98,13 @@ public class Board {
         int countTwo = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                result += board[i][j];
+                result += " " + board[i][j];
                 if (countOne < 2) {
-                    result += " | ";
+                    result += " |";
                     countOne++;
                 }
                 else if (countOne == 2 && countTwo < 2) {
-                    result += "\n--------\n";
+                    result += "\n-----------\n";
                     countOne = 0;
                     countTwo++;
                 }

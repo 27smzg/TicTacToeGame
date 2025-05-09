@@ -2,9 +2,13 @@ public class TicTacToeGame {
     public static void main(String[] args){
         Board a = new Board();
         System.out.println(a.toString());
+        a.makeMove(0, 1, 'x');
+        System.out.println(a);
     }
     //private instance variable - board
-    //current player private instance variable
+    private Board() board = new Board();
+    //current player private instance variable - true for human, false for AI
+    private boolean curPlay;
 
     //prompt user for difficulty and if they want to go first
         //stores these in variables
