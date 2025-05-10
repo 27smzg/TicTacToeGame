@@ -1,4 +1,8 @@
 public class TicTacToeGame {
+    public static void main(String[] args) {
+        TicTacToeGame run = new TicTacToeGame();
+    }
+
     Scanner scan = new Scanner(System.in);
 
     //private instance variable - board
@@ -15,11 +19,12 @@ public class TicTacToeGame {
     private boolean play = true;
 
     //switchPlayer() - switches the current player
-    public void switchPlayer() {
+    public void switchPlayer () {
         curPlay = !curPlay;
     }
 
-    public static void main(String[] args) {
+    /* Attempted to make a constructor to run the game --- I'm a  little confused how to get this to work */
+    public TicTacToeGame() {
         while (play) {
             //setup for game:
             //prompt user for difficulty, storing their answer
@@ -57,7 +62,7 @@ public class TicTacToeGame {
             //main game loop:
             System.out.println(board);
             //while checkWin() != true
-            while (checkWin() != true) {
+            while (board.checkWin() != true) {
                 //if current player is human
                 if (curPlay == true) {
                     int r = -1;
@@ -92,14 +97,14 @@ public class TicTacToeGame {
                 switchPlayer();
 
                 //check if the board is full, or if their is a winner, responding appropriately
-                if (checkWin()) {
-                    if (curPlayer) {
+                if (board.checkWin()) {
+                    if (curPlay) {
                         System.out.println("CONGRATULATIONS, YOU HAVE WON!!! (:");
                     } else {
                         System.out.println("I'm sorry, but you have been defeated! ):");
                     }
                 }
-                if (checkFull()) {
+                if (board.checkFull()) {
                     System.out.println("The game has ended in a draw.");
                 }
                 //ask if the user would like to play again, and handle input

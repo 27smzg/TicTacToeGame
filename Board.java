@@ -2,6 +2,11 @@ public class Board {
     //Initiate private instance variable - 3x3 grid for game board
     private char[][] board = new char[3][3];
 
+    //getArr - returns the 3x3 array board
+    public char[][] getArr() {
+        return board;
+    }
+
     //constructor sets each square to a "-"
     public Board() {
         //Iterate through the 2D array with two for loops
@@ -35,15 +40,17 @@ public class Board {
         //sets board[r][c] to the sym
         board[r][c] = sym;
     }
+
     //cloneBoard(Board a), returns a copy of the board input
-    public static Board cloneBoard(Board a) {
+    public Board cloneBoard(Board a) {
         Board b = new Board();
         //iterates through each square in board a, copying it onto board b
-        for (int = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                b[i][j] = a[i][j];
+        for (int i = 0; i < a.getArr().length; i++) {
+            for (int j = 0; j < a.getArr()[0].length; j++) {
+                b.getArr()[i][j] = a.getArr()[i][j];
             }
         }
+        return b;
     }
 
     //checkRowWin()

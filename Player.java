@@ -13,10 +13,23 @@ public class Player {
         return sym;
     }
 
+
     //makeMove(board, r, c)
     //precondition - move is valid
     public void makeMove(Board b, int r, int c) {
         //triggers the board makeMove() with r, c, and the instance variable letter
         b.makeMove(r, c, sym);
+    }
+
+    //makeMoveOpposite(board, r, c) - makes a move with the opposite symbole
+    //precondition - move is valid
+    public void makeMoveOpposite(Board b, int r, int c) {
+        //same as makeMove, but swaps the letter
+        if (sym == 'x') {
+            b.makeMove(r, c, 'o');
+        }
+        else if (sym == 'o') {
+            b.makeMove(r, c, 'x');
+        }
     }
 }

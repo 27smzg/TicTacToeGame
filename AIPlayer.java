@@ -9,33 +9,31 @@ public class AIPlayer extends Player {
     }
 
     //getIsFirst() - returns isFirst;
-    public char getIsFirst() {
+    public boolean getIsFirst() {
         return isFirst;
     }
 
-    //checkRow(int r) - checks the row, returning the array of that row
-
-    //checkCol
-
-    //checkDiag
-/* having issues with the ai functionality */
-    //checkForBlock(board, letter) return int[] {r,c} if there's a block, {-1, -1} otherwise
-    public checkForBlock(board b, char let) {
-        for (int i = 0; i < board.length; i++) {
-            if (())
+    //checkForBlock(board) return int[] {r,c} if there's a block, {-1, -1} otherwise
+    public int[] checkForBlock(board a) {
+        //check each square with a clone of the board, and test if it would produce a win for the opposite symbol
+        for (int i = 0; i < a.getArr().length; i++) {
+            for (int j = 0; j < a.getArr()[0].length; j++) {
+                Board b = a.cloneBoard();
+                super.makeMoveOpposite(b, i, j);
+                if (b.checkWin()) {
+                    return {i, j};
+                }
+            }
         }
-
-        //if there's a matching x or o, checks if there is a - in the same direciton
-
-        //or the opposite, if there it exceeds the size of the array
+        return {-1, -1};
     }
 
     //checkForWin(board) return int[] {r, c} if there's a win, {-1, -1} otherwise
-    public int[] checkForWin(board a) {
+    public int[] checkForWin(Board a) {
         //check each square with a clone of the board, and test if it would produce a win
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                board b = cloneBoard(a);
+        for (int i = 0; i < a.getArr().length; i++) {
+            for (int j = 0; j < a.getArr()[0].length; j++) {
+                Board b = a.cloneBoard();
                 super.makeMove(b, i, j);
                 if (b.checkWin()) {
                     return {i, j};
@@ -45,7 +43,17 @@ public class AIPlayer extends Player {
      return {-1, -1};
     }
 
-    //randomMove()
-        //find move by using random number (0-2) for the row and column indices, makeMove() with that returns false, try again if it returns false
-
+    //randomMove(Board b)
+    public void randomMove(Board b) {
+        //while loop testing if the move is valid
+        int r = (int) Math.random() * 3;
+        int c = (int) Math.random() * 3;
+        while(b.isValidMove(r, c) == false) {
+            //keep generating random moves
+            r = (int) Math.random() * 3;
+            c = (int) Math.random() * 3;
+        }
+        //when a valid move is found, make it
+        super.makeMove(b, r, c);
+    }
 }
