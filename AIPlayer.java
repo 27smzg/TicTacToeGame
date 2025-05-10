@@ -14,33 +14,39 @@ public class AIPlayer extends Player {
     }
 
     //checkForBlock(board) return int[] {r,c} if there's a block, {-1, -1} otherwise
-    public int[] checkForBlock(board a) {
+    public int[] checkForBlock(Board a) {
+        int[] out = {-1, -1};
         //check each square with a clone of the board, and test if it would produce a win for the opposite symbol
         for (int i = 0; i < a.getArr().length; i++) {
             for (int j = 0; j < a.getArr()[0].length; j++) {
                 Board b = a.cloneBoard();
                 super.makeMoveOpposite(b, i, j);
                 if (b.checkWin()) {
-                    return {i, j};
+                    out[0] = i;
+                    out[1] = j;
+                    return out;
                 }
             }
         }
-        return {-1, -1};
+        return out;
     }
 
     //checkForWin(board) return int[] {r, c} if there's a win, {-1, -1} otherwise
     public int[] checkForWin(Board a) {
+        int[] out = {-1, -1};
         //check each square with a clone of the board, and test if it would produce a win
         for (int i = 0; i < a.getArr().length; i++) {
             for (int j = 0; j < a.getArr()[0].length; j++) {
                 Board b = a.cloneBoard();
                 super.makeMove(b, i, j);
                 if (b.checkWin()) {
-                    return {i, j};
+                    out[0] = i;
+                    out[1] = j;
+                    return out;
                 }
             }
         }
-     return {-1, -1};
+    return out;
     }
 
     //randomMove(Board b)
