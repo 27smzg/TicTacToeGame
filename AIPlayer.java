@@ -13,6 +13,11 @@ public class AIPlayer extends Player {
         return isFirst;
     }
 
+    //setIsFirst(boolean isF) - changes the value of isFirst to the boolean input isF
+    public void setIsFirst(boolean isF) {
+        isFirst = isF;
+    }
+
     //checkForBlock(board) return int[] {r,c} if there's a block, {-1, -1} otherwise
     public int[] checkForBlock(Board a) {
         int[] out = {-1, -1};
