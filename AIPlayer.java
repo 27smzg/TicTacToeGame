@@ -37,7 +37,7 @@ public class AIPlayer extends Player {
         //check each square with a clone of the board, and test if it would produce a win
         for (int i = 0; i < a.getArr().length; i++) {
             for (int j = 0; j < a.getArr()[0].length; j++) {
-                Board b = cloneBoard(a);
+                Board b = a.cloneBoard(a);
                 super.makeMove(b, i, j);
                 if (b.checkWin()) {
                     out[0] = i;

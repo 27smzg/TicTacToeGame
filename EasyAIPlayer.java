@@ -7,7 +7,7 @@ public class EasyAIPlayer extends AIPlayer {
     //makeMove()
     public void makeMove(Board a) {
         int[] numWin = super.checkForWin(a);
-        int[] numBlock = super.checkForBlock(a)
+        int[] numBlock = super.checkForBlock(a);
         //if there's a win, plays it 75% of the time
         if (numWin[0] != -1) {
             //Make a random number 1-4, if 1-3, plays the win, 4 does not

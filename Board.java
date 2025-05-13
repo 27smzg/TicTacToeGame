@@ -19,11 +19,13 @@ public class Board {
     }
 
     //constructor
-    public Board(char[3][3] arr) {
+    public Board(char[][] arr) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 //Set each square to a "-"
                 board[i][j] = arr[i][j];
+            }
+        }
     }
 
     //isValidMove() - checks if the square is a "-", or if r or c are outside the bounds [0,2]
@@ -59,6 +61,20 @@ public class Board {
             }
         }
         return b;
+    }
+
+    //compareBoard(Board a, Board b) - compares one board's array with the array by checking if each entry is the same as the entry in the corresopnding 2d arrays
+    public static boolean compareBoard(Board a, char[][] b) {
+        //use two for loops to iterate through the 2D arrays, comparing each entry, if not the same return false
+        for (int i = 0; i < a.getArr().length; i++) {
+            for (int j = 0; j < a.getArr()[0].length; j++) {
+                if (a.getArr()[i][j] != b[i][j]) {
+                    return false;
+                }
+            }
+        }
+        //if all are the same, return true
+        return true;
     }
 
     //checkRowWin()

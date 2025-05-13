@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class TicTacToeGame {
     public static void main(String[] args) {
         TicTacToeGame run = new TicTacToeGame();
@@ -88,7 +89,7 @@ public class TicTacToeGame {
                 //if current player is ai
                 if (curPlay == false) {
                     //AI makes a move
-                    playerAI.makeMove();
+                    playerAI.makeMove(board);
                     //print board
                     System.out.println(board);
                 }
