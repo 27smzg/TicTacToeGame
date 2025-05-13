@@ -18,6 +18,14 @@ public class Board {
         }
     }
 
+    //constructor
+    public Board(char[3][3] arr) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                //Set each square to a "-"
+                board[i][j] = arr[i][j];
+    }
+
     //isValidMove() - checks if the square is a "-", or if r or c are outside the bounds [0,2]
     public boolean isValidMove(int r,int c) {
         //checks if r and c are in [0,2]
@@ -42,7 +50,7 @@ public class Board {
     }
 
     //cloneBoard(Board a), returns a copy of the board input
-    public Board cloneBoard(Board a) {
+    public static Board cloneBoard(Board a) {
         Board b = new Board();
         //iterates through each square in board a, copying it onto board b
         for (int i = 0; i < a.getArr().length; i++) {
