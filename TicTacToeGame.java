@@ -31,6 +31,7 @@ public class TicTacToeGame {
 
     /* Attempted to make a constructor to run the game --- I'm a  little confused how to get this to work */
     public TicTacToeGame() {
+        System.out.println("WELCOME TO TICTACTOE - THE VIDEO GAME");
         while (play) {
             //setup for game:
             //prompt user for difficulty, storing their answer
@@ -52,10 +53,12 @@ public class TicTacToeGame {
                 curPlay = true;
                 isFirst = false;
                 symbol = 'O';
+                System.out.println("You will be the letter X");
             } else {
                 curPlay = false;
                 isFirst = true;
                 symbol = 'X';
+                System.out.println("You will be the letter O");
             }
 
             HardAIPlayer playerAIHard = new HardAIPlayer(symbol, isFirst);
@@ -87,10 +90,10 @@ public class TicTacToeGame {
                     int c = -1;
                     while (!board.isValidMove(r, c)) {
                         //prompt user for a move
-                        System.out.println("Please choose a move (x coordinate (a-c), then hit enter, then y coordinate (1-3))");
+                        System.out.println("Please choose a move:");
                         //check if move is possible, reprompting if not
-                        String xCoord = scan.nextLine().toLowerCase();
-                        String yCoord = scan.nextLine().toLowerCase();
+                        String xCoord = "";
+                        String yCoord = "";
                         while (!xCoord.equals("a") && !xCoord.equals("b") && !xCoord.equals("c")) {
                             System.out.println("Please enter a valid x coordinate (a-c)");
                             xCoord = scan.nextLine().toLowerCase();
@@ -139,7 +142,7 @@ public class TicTacToeGame {
                 //check if the board is full, or if their is a winner, responding appropriately
                 if (board.checkWin()) {
                     if (!curPlay) {
-                        System.out.println("CONGRATULATIONS, YOU HAVE WON!!! (:");
+                        System.out.println(board + "\nCONGRATULATIONS, YOU HAVE WON!!! (:");
                     } else {
                         System.out.println("I'm sorry, but you have been defeated! ):");
                     }
