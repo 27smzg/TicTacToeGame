@@ -44,7 +44,7 @@ public class AIPlayer extends Player {
             for (int j = 0; j < a.getArr()[0].length; j++) {
                 Board b = a.cloneBoard(a);
                 super.makeMove(b, i, j);
-                if (b.checkWin()) {
+                if (b.checkWin() && a.isValidMove(i, j)) {
                     out[0] = i;
                     out[1] = j;
                     return out;
@@ -56,15 +56,61 @@ public class AIPlayer extends Player {
 
     //randomMove(Board b)
     public void randomMove(Board b) {
+        //create a random # 1-9, 1 for the top left, 2 for the top middle -> 9 for the bottom right (according to the getSquare(int) helper method)
+        int random = (int) (Math.random() * 9) + 1;
+        int orig = random;
         //while loop testing if the move is valid
-        int r = (int) Math.random() * 3;
-        int c = (int) Math.random() * 3;
-        while(b.isValidMove(r, c) == false) {
+        while (random > 1 && b.isValidMove(getSquare(random)[0], getSquare(random)[1]) == false) {
             //keep generating random moves
-            r = (int) Math.random() * 3;
-            c = (int) Math.random() * 3;
+            random--;
         }
-        //when a valid move is found, make it
-        super.makeMove(b, r, c);
+        while (random < 9 && b.isValidMove(getSquare(random)[0], getSquare(random)[1]) == false) {
+            //keep generating random moves
+            random++;
+        }
+        super.makeMove(b, getSquare(random)[0], getSquare(random)[1]);
+    }
+
+    //getSquare(int a) - helper method for randomMove() which gets the r and c for any int 1-9 - 1 for the top left, 2 for the top middle -> 9 for the bottom right
+    //precondition int a is [1,9]
+    public int[] getSquare(int a) {
+        if (a == 1) {
+            int[] b = {0, 0};
+            return b;
+        }
+        if (a == 2) {
+            int[] b = {0, 1};
+            return b;
+        }
+        if (a == 3) {
+            int[] b = {0, 2};
+            return b;
+        }
+        if (a == 4) {
+            int[] b = {1, 0};
+            return b;
+        }
+        if (a == 5) {
+            int[] b = {1, 1};
+            return b;
+        }
+        if (a == 6) {
+            int[] b = {1, 2};
+            return b;
+        }
+        if (a == 7) {
+            int[] b = {2, 0};
+            return b;
+        }
+        if (a == 8) {
+            int[] b = {2, 1};
+            return b;
+        }
+        if (a == 9) {
+            int[] b = {2, 2};
+            return b;
+        }
+        int[] b = {-1, -1};
+        return b;
     }
 }

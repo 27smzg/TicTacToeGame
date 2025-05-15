@@ -34,11 +34,11 @@ public class Board {
         if (r < 0 || r > 2) {
             return false;
         }
-        else if (c < 0 || c > 2) {
+        if (c < 0 || c > 2) {
             return false;
         }
         //checks if the space is "empty"
-        else if (board[r][c] != '-') {
+        if (board[r][c] != '-') {
             return false;
         }
         return true;
@@ -138,6 +138,30 @@ public class Board {
         return true;
     }
 
+    //boardFill() - fills the board - for proper game ending
+    public void boardFill() {
+        //iterates through the array, setting any square with a dash to an 'X'
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] == '-') {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+
+    //boardClear() - fills the board with '-'s - for proper game ending
+    public void boardClear() {
+        //iterates through the array, setting any square with a dash to an 'X'
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] != '-') {
+                    board[i][j] = '-';
+                }
+            }
+        }
+    }
+
     //toString() returns a String with each square with a " | " between each, and a row of "  |   |  ", then a row of "--------", repeated for each row
     public String toString() {
         String result = "    a | b | c \n 1 ";
@@ -152,7 +176,7 @@ public class Board {
                     countOne++;
                 }
                 else if (countOne == 2 && countTwo < 2) {
-                    result += "\n-----------\n " + row + " ";
+                    result += "\n   -----------\n " + row + " ";
                     row++;
                     countOne = 0;
                     countTwo++;

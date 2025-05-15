@@ -25,11 +25,11 @@ public class Player {
     //precondition - move is valid
     public void makeMoveOpposite(Board b, int r, int c) {
         //same as makeMove, but swaps the letter
-        if (sym == 'x') {
-            b.makeMove(r, c, 'o');
+        if (sym == 'X') {
+            b.makeMove(r, c, 'O');
         }
-        else if (sym == 'o') {
-            b.makeMove(r, c, 'x');
+        else if (sym == 'O') {
+            b.makeMove(r, c, 'X');
         }
     }
 }
